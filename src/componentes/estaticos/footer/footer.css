@@ -1,0 +1,22 @@
+.box1{
+    background-color: #222222;
+    height: 120px;
+}
+
+.box2{
+    background-color: #111111;
+    height: 60px;
+}
+
+.redes{
+    font-size: 60px !important;
+    color: white;
+}
+
+.textos{
+   color: white;
+}
+
+.instagram:houver {
+    transform: scale(1.1);
+}
