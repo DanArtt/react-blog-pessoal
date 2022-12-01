@@ -1,22 +1,41 @@
-.box1{
-    background-color: #222222;
-    height: 120px;
+.ajuste {
+    align-items: center;
+    justify-content: center;
 }
 
-.box2{
-    background-color: #111111;
-    height: 60px;
+.textoFooter {
+    color: white;
+}
+
+.textoBold {
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoPadding {
+    padding-top: 0.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoWedoCare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.gradient {
+    background-color: #434242;
+    background-image: linear-gradient(180deg, #434242 0%, #000000 68%);
 }
 
 .redes{
     font-size: 60px !important;
     color: white;
-}
-
-.textos{
-   color: white;
-}
-
-.instagram:houver {
-    transform: scale(1.1);
 }
