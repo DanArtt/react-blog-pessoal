@@ -14,10 +14,8 @@ function Login() {
     const [token, setToken] = useLocalStorage('token');
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
-            id: 0,
             usuario: '',
             senha: '',
-            token: ''
         }
         )
 
@@ -38,7 +36,7 @@ function Login() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
         try{
-            await login(`/usuarios/logar`, userLogin, setToken)
+            await login(`/auth/logar`, userLogin, setToken)
 
             alert('Usuário logado com sucesso!');
         }catch(error){
@@ -49,7 +47,7 @@ function Login() {
         
 
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
+        <Grid container  justifyContent='center' alignItems='center'>
             <Grid alignItems='center' xs={6}>
                 <Box paddingX={20}>
                     <form onSubmit={onSubmit}>

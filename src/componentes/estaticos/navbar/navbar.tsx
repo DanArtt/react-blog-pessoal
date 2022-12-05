@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Grid, Toolbar, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -41,20 +41,22 @@ function Navbar() {
                                 Criar Tema
                             </Typography>
                         </Box>
-                        <Box mx={1} className='cursor central loginSair'>
+                        <Grid className='central ml sizeIcon'>
+                        <Box mx={1} className='cursor'>
 
                             <Link to='/login' className='text-decorator-none cursor'>
-                                <a href="https://www.linkedin.com/school/generationbrasil/" target="_blank" rel="noopener noreferrer">
+                                <a href="/" rel="noopener noreferrer">
                                     <AccountBoxIcon style={{ fontSize: 30, color: "white" }} />
                                 </a>
                             </Link>
                             <Link to='/login' className='text-decorator-none cursor'>
-                                <a href="https://www.linkedin.com/school/generationbrasil/" target="_blank" rel="noopener noreferrer">
+                                <a href="/" rel="noopener noreferrer">
                                     <ExitToAppIcon style={{ fontSize: 30, color: "white" }} />
                                 </a>
                             </Link>
 
                         </Box>
+                    </Grid>
 
 
                     </Box>
