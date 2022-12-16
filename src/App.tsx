@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './componentes/estaticos/navbar/navbar';
 import Footer from './componentes/estaticos/footer/footer';
-import Home from './paginas/home/Home';
 import './App.css';
 import Login from './paginas/login/login';
 import CadastroUsuario from './paginas/cadastrar/Cadastrar';
@@ -16,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import Home from './paginas/home/Home';
 
 function App() {
   return (
