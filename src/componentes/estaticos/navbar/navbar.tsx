@@ -36,10 +36,6 @@ function Navbar() {
             <AppBar position="static" className='gradiente central' >
                 <Toolbar variant="dense">
 
-                    <Box className='cursor' >
-                        <img className='sizeIcon' src="https://copag.com.br/images/logo-big-menu.png" alt="" />
-                    </Box>
-
                     <Box display="flex" justifyContent="start">
                     <Link to="/home" className="text-decorator-none">
                             <Box mx={1} className='cursor'>

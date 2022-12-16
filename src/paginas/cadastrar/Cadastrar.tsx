@@ -52,30 +52,35 @@ function CadastroUsuario() {
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha == user.senha){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        toast.success('Usuário Cadastrado com Sucesso!', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "dark",
-            });
-        }else{
-            toast.error('Erro, Verifique se os campos estão Corretos!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-        }
+
+        console.log(Object.values(user))
+
+        if (confirmarSenha == user.senha) {
+            try{
+                await cadastroUsuario(`/usuario/cadastrar`, user, setUserResult)
+                toast.success('Usuário Cadastro com Sucesso!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    });
+            }catch(error){
+                toast.error('Erro, Verifique as Informações!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    });
+            }            
+        } 
     }
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>
