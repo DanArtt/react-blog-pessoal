@@ -29,6 +29,7 @@ function Home() {
             theme: "colored",
             });
           navigate("/login")
+        
   
       }
   }, [token])
