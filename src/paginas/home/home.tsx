@@ -5,17 +5,20 @@ import TabPostagem from '../../componentes/postagens/tabpostagem/TabPostagem';
 import ModalPostagem from '../../componentes/postagens/modalPostagem/ModalPostagem';
 import './Home.css';
 import { useNavigate } from 'react-router';
-import useLocalStorage from 'react-use-localstorage';
 import { toast } from 'react-toastify';
+import TokenState from '../../store/tokens/tokenReducer';
+import { useSelector } from 'react-redux';
 
 function Home() {
 
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
-    
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    )
+
     useEffect(() => {
       if (token == "") {
-        toast.warning('Você precisa estar Logado para Entrar!', {
+        toast.error('Você precisa estar logado!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -23,7 +26,7 @@ function Home() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            theme: "dark",
+            theme: "colored",
             });
           navigate("/login")
   

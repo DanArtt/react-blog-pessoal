@@ -3,36 +3,39 @@ import { Grid, Typography, TextField, Button } from '@material-ui/core';
 import {Box} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
-import useLocalStorage from 'react-use-localstorage';
 import UserLogin from '../../model/UserLogin';
 import { login } from '../../services/Service';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { addToken } from '../../store/tokens/action';
 
 function Login() {
 
 
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage('token');
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('')
     const [userLogin, setUserLogin] = useState<UserLogin>(
         {
             usuario: '',
             senha: '',
         }
-        )
+    );
 
-        function updatedModel(e: ChangeEvent<HTMLInputElement>) {
+    function updatedModel(e: ChangeEvent<HTMLInputElement>) {
 
-            setUserLogin({
-                ...userLogin,
-                [e.target.name]: e.target.value
-            })
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    useEffect(() => {
+        if (token != '') {
+            dispatch(addToken(token))
+            navigate('/home')
         }
-
-        useEffect(()=>{
-            if(token != ''){
-                navigate('/home')
-            }
-        }, [token])
+    }, [token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
