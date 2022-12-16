@@ -5,14 +5,14 @@ import { Grid, Typography, Button, TextField } from '@material-ui/core';
 import {Box} from '@mui/material';
 import { Link } from 'react-router-dom';
 import './Cadastrar.css';
-import UserCadastro from '../../model/UserCadastro';
 import { toast } from 'react-toastify';
+import User from '../../model/UserCadastro';
 
 function CadastroUsuario() {
 
     let navigate = useNavigate();
-    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
-    const [user, setUser] = useState<UserCadastro>(
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
+    const [user, setUser] = useState<User>(
         {
             id: 0,
             nome: '',
@@ -21,7 +21,7 @@ function CadastroUsuario() {
             foto: ''
         })
 
-    const [userResult, setUserResult] = useState<UserCadastro>(
+    const [userResult, setUserResult] = useState<User>(
         {
             id: 0,
             nome: '',
@@ -29,9 +29,11 @@ function CadastroUsuario() {
             senha: '',
             foto: ''
         })
+
+
 
     useEffect(() => {
-        if (userResult.id != 0) {
+        if (userResult.id !== 0) {
             navigate("/login")
         }
     }, [userResult])
@@ -57,7 +59,7 @@ function CadastroUsuario() {
 
         if (confirmarSenha == user.senha) {
             try{
-                await cadastroUsuario(`/usuario/cadastrar`, user, setUserResult)
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
                 toast.success('Usuário Cadastro com Sucesso!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -80,7 +82,18 @@ function CadastroUsuario() {
                     theme: "colored",
                     });
             }            
-        } 
+        } else{
+            toast.error('Erro, Verifique as Informações!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                });
+        }
     }
     return (
         <Grid container direction='row' justifyContent='center' alignItems='center'>

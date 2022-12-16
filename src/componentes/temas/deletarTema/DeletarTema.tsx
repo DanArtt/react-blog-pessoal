@@ -3,25 +3,37 @@ import { Card, CardActions, CardContent, Button, Typography} from '@material-ui/
 import {Box} from '@mui/material';
 import './DeletarTema.css';
 import {useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { buscaId, deleteId } from '../../../services/Service';
 import Tema from '../../../model/Tema';
 import { toast } from 'react-toastify';
+import TokenState from '../../../store/tokens/tokenReducer';
+import { useSelector } from 'react-redux';
 
 
 function DeletarTema() {
-    let navigate = useNavigate();
-    const { id } = useParams<{id: string}>();
-    const [token, setToken] = useLocalStorage('token');
-    const [tema, setTema] = useState<Tema>()
+  let navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+)
+  const [tema, setTema] = useState<Tema>()
 
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
-    
-        }
-    }, [token])
+  useEffect(() => {
+    if (token == "") {
+      toast.error('Você precisa estar logado!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+      navigate("/login")
+
+    }
+  }, [token])
 
     useEffect(() =>{
         if(id !== undefined){
